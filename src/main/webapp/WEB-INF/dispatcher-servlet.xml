@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <!--此文件负责整个mvc中的配置-->
+
+    <!--启用注解扫描-->
+    <!-- 配置包扫描器  限制只扫描Handle的注解@Controller和异常处理的注解@ControllerAdvice-->
+    <!-- 这里应该具体指定到controller所在的包，否则当spring和spring mvc框架叠加使用时，这个servlet会接管spring的service等事务-->
+    <context:component-scan base-package="com.hzero.demo.springmvc.controller"/>
+
+    <!--    6、视图解析器-->
+    <!--  通过视图解析器，控制器就不会和特定的视图相耦合，传递给 DispatcherServlet 的视图名并不直接表示某个特定的 JSP。
+    （实际上，它甚至不能确定视图就是 JSP）相反，它传递的仅仅是一个逻辑名称，这个名称将会用来查找产生结果的真正视图。-->
+    <!--    DispatcherServlet 将会使用视图解析器（view resolver）来将逻辑视图名匹配为一个特定的视图实现，
+    它可能是也可能不是 JSP-->
+    <!-- 这里配置了一个 Spring MVC 内置的一个视图解析器，该解析器是遵循着一种约定：会在视图名上添加前缀和后缀，进而确定一个 Web 应用中视图资源的物理路径的。-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+          p:viewClass="org.springframework.web.servlet.view.JstlView"
+          p:prefix="/WEB-INF/views/"
+          p:suffix=".jsp"/>
+
+    <!--&lt;!&ndash;    &lt;!&ndash;静态资源映射&ndash;&gt;&ndash;&gt; 待处理:资源404，且拦截器不生效。-->
+    <!--    <mvc:annotation-driven/>-->
+    <!--    <mvc:resources mapping="/css/**" location="/css/"/>-->
+    <!--    <mvc:resources mapping="/js/**" location="/js/"/>-->
+    <!--    <mvc:resources mapping="/images/**" location="/WEB-INF/static/images/"/>-->
+
+</beans>
