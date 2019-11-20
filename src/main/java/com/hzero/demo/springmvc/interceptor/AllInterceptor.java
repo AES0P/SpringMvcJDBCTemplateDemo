@@ -4,6 +4,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.context.request.WebRequestInterceptor;
 
+/**
+ * 这个拦截器用于拦截所有的controller
+ */
 public class AllInterceptor implements WebRequestInterceptor {
 
     /**

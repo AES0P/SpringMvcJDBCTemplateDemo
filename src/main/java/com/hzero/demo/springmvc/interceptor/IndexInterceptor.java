@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
 
 /**
- * 1、定义一个拦截器
+ * 这个拦截器用于拦截指定的controller，至于具体拦截哪个，只需在配置文件applicationContext.xml中配置即可。
  */
 public class IndexInterceptor extends HandlerInterceptorAdapter {
 

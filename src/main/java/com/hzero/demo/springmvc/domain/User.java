@@ -4,6 +4,18 @@ import java.io.Serializable;
 
 /**
  * pojo:user
+ *
+ * 对应MySQL建表语句
+ * CREATE TABLE `user` (
+ * `id`  int(11) NOT NULL AUTO_INCREMENT ,
+ * `name`  varchar(10) NOT NULL ,
+ * `password`  varchar(16) NOT NULL ,
+ * `address`  varchar(200) NULL ,
+ * `phone`  varchar(20) NULL ,
+ * PRIMARY KEY (`id`)
+ * )
+ * ;
+ *
  */
 public class User implements Serializable {
 

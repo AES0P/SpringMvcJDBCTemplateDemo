@@ -6,7 +6,7 @@
 
     <display-name>Maven Spring Spring MVC - JDBCTemplate</display-name>
 
-    <!--添加 spring 容器监听器,如果使用了Spring框架，一定要指定其位置并设置监听器-->
+    <!--1、添加 spring 容器监听器,如果使用了Spring框架，一定要指定其位置并设置监听器-->
     <!-- spring配置文件 -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
@@ -18,7 +18,7 @@
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
 
-    <!-- 添加日志监听器 -->
+    <!-- 2、添加日志监听器 ，这里使用logback-->
     <context-param>
         <param-name>logbackConfigLocation</param-name>
         <param-value>classpath:/logback.xml</param-value>
@@ -28,12 +28,12 @@
         <listener-class>ch.qos.logback.ext.spring.web.LogbackConfigListener</listener-class>
     </listener>
 
-    <!--    0.设置项目启动时的首页-->
+    <!--    3.设置项目启动时的首页-->
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
 
-    <!--    1、dispatcher 的任务就是拦截请求发送给 Spring MVC 控制器-->
+    <!--    4、设置dispatcher，它的任务就是拦截请求发送给 Spring MVC 控制器-->
     <!--添加springmvc前端控制器或者说中央控制器-->
     <servlet>
         <servlet-name>dispatcher</servlet-name>
@@ -46,29 +46,11 @@
         <load-on-startup>1</load-on-startup>
     </servlet>
 
-    <!--   2、配置 Mapping 交给 对应Controller 处理-->
+    <!--   5、配置 Mapping 交给 对应Controller 处理-->
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
-
-    <!-- 字符编码过滤器   spring web自动提供一个 -->
-    <filter>
-        <filter-name>encodingFilter</filter-name>
-        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
-        <init-param>
-            <param-name>encoding</param-name>
-            <param-value>UTF-8</param-value>
-        </init-param>
-        <init-param>
-            <param-name>forceEncoding</param-name>
-            <param-value>true</param-value>
-        </init-param>
-    </filter>
-    <filter-mapping>
-        <filter-name>encodingFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
 
 
 </web-app>

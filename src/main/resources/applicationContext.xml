@@ -12,10 +12,12 @@
 
     <!-- 自动扫描的包 -->
     <!-- 扫描类包，将标注Spring注解的类自动转化Bean，同时完成Bean的注入 -->
+    <!-- 也可以使用exclude语法，这里这样分开扫描是为了方便后续排错-->
     <context:component-scan base-package="com.hzero.demo.springmvc.domain"/>
     <context:component-scan base-package="com.hzero.demo.springmvc.dao"/>
     <context:component-scan base-package="com.hzero.demo.springmvc.service"/>
 
+    <!--    导入datasource配置文件-->
     <import resource="Spring-Datasource.xml"/>
 
     <!-- 配置事务管理器 -->
